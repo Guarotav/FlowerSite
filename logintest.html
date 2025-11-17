@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="js/cookiemanager.js"></script>
+    <script src="js/login.js"></script>
+  </head>
+  <body>
+    <script>
+      // TESTING LOGIN.JS CODE
+      let x = new Login();
+      x.addUser("john", "doe", "jdoe", "1111");
+      x.addUser("marie", "smith", "msmith", "2222");
+      x.addUser("john2", "doe2", "jdoe2", "3333");
+
+      // x.delUser("msmith");
+      // x.delUser("jdoe");
+      x.delUser("jdoe2");
+      // SAMPLE OUTPUT: login = "john:doe:jdoe:1111@marie:smith:msmith:2222"
+    </script>
+  </body>
+</html>
