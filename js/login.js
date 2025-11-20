@@ -10,22 +10,22 @@ class User {
 class Login {
   constructor() {
     this.userList = [];
-    //this.loadUsers();
-  }
-  getItemImage(id) {
-    for (let i = 0; i < this.userList.length; ++i) {
-      let item = this.userList[i];
-      alert(item.getItemId());
-      if (item.getItemId() == id) {
-        alert("Found Item:");
-        return this.userList[i].getItemImage();
-      }
-    }
-    return "";
+    this.loadUsers();
   }
   getuserList() {
     return this.userList;
   }
+  getUser(userid){
+    for (let i = 0; i < this.userList.length; ++i) {
+      let user = this.userList[i];
+      if (user.userid == userid) {
+        // DOES USER ALREADY EXIST??
+        return user.password; 
+      }
+    }
+      return null;
+  }
+  
   printShoppingCart() {
     for (let i = 0; i < this.userList.length; ++i) {
       let item = this.userList[i];
@@ -63,23 +63,6 @@ class Login {
     }
   }
 
-  getTotalCost() {
-    let total = 0;
-    for (let i = 0; i < this.userList.length; ++i) {
-      let item = this.userList[i];
-      total += parseFloat(item.getTotalCost());
-    }
-    return total.toFixed(2);
-  }
-  addTax() {
-    let total = parseFloat(this.getTotalCost());
-    return (total * 0.1 + total).toFixed(2);
-  }
-
-  addShipping(shipcost = 0) {
-    return (parseFloat(this.addTax()) + parseFloat(shipcost)).toFixed(2);
-  }
-
   emptyShoppingCart() {
     this.userList = [];
     var usercart = this.userid + "cart";
@@ -104,15 +87,17 @@ class Login {
   }
   loadUsers() {
     // LOAD LOGIN COOKIE CONTENT INTO the USERLIST ARRAY
-    let cartname = this.userid + "cart";
+    let cartname = "login";
     let cart = getCookie(cartname);
     if (cart != null) {
       var str = cart.split("@");
       for (var i = 0; i < str.length; i++) {
         var item = str[i].split(":");
-        var cookiename = item[0];
-        var cookievalue = item[1];
-        this.setNumOrdered(cookiename, cookievalue);
+        var first = item[0];
+        var last = item[1];
+        var userid = item[2];
+        var password = item[3];
+        this.addUser(first, last, userid, password);
       }
     }
   }
