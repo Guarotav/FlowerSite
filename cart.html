@@ -145,7 +145,7 @@
         if (flag2) {
           document.getElementById("info").innerHTML = str;
           document.getElementById("info2").innerHTML =
-            "<a href='shipping.html'>Shipping Next</a>";
+            "<div style='margin-top:20px; text-align:center; clear:both;'><a href='checkout.html' style='background:darkred;color:white;padding:15px 25px;text-decoration:none;margin:10px;border-radius:5px;display:inline-block;'>🛒 Checkout</a></div>";
         } else {
           document.getElementById("info").innerHTML =
             "<h1>EMPTY CART<br><a href='products.html'>Go Back Shopping</a></h1>";
@@ -154,6 +154,9 @@
     </script>
   </head>
   <body onload="createCart()">
+    <script>
+      if(getCookie('flag') !="true") location.href='login.html';
+    </script>
     <div id="main">
       <!-- header begins -->
       <div id="header">
@@ -195,7 +198,7 @@
         <p>&nbsp;</p>
         <!-- -------------------------------------------------  -->
         <div id="info"></div>
-        <div id="inf2"></div>
+        <div id="info2"></div>
         <!-- -------------------------------------------------  -->
         <div style="clear: both"></div>
       </div>
