@@ -70,6 +70,7 @@
       }
     </style>
     <script src="js/cookiemanager.js"></script>
+    <script src="js/shoppingcart.js"></script>
     <script>
       function displayOrderConfirmation() {
         var firstName = getCookie("orderFirstName");
@@ -95,6 +96,10 @@
         delCookie("orderFirstName");
         delCookie("orderLastName");
         delCookie("orderEmail");
+        
+        // Clear cart as required
+        let cart = new ShoppingCart(getCookie("whoami"));
+        cart.emptyShoppingCart();
       }
     </script>
   </head>

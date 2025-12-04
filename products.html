@@ -53,6 +53,10 @@
     </style>
   </head>
   <body>
+    <script src="js/cookiemanager.js"></script>
+    <script>
+      if(getCookie('flag') !="true") location.href='login.html';
+    </script>
     <div id="main">
       <!-- header begins -->
       <div id="header">
